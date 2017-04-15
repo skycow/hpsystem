@@ -1,6 +1,7 @@
 var express = require('express')
 var app = express()
 var devices = 0;
+//exports.devices=devices;
 var db = [];
 
 app.get('/',function(req,res){
@@ -11,6 +12,11 @@ app.get('/',function(req,res){
 app.post('/:id/:type/:time',function(req,res){
   res.send()
   db.push(req.params)
+  $("#logsBod").empty()
+  for(it in db){
+    $("#logsBod").append('<tr><td>Player '+db[it].id+'</td>'+
+    '<td>'+db[it].type+'</td>'+'<td>'+db[it].time+'</td>'+'</tr>')
+  }
 })
 
 app.get('/register',function(req,res){

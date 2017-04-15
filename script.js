@@ -5,6 +5,7 @@ $(function(){
 	var dTime=60000
 	$(".navbar-brand").click(function(event){
 	  event.preventDefault()
+		alert(devices)
 		/*for testing only*/
 		if(dTime == 1000){
 			dTime = 60000
@@ -14,15 +15,15 @@ $(function(){
 	});
 	$("select").mouseover(function(){
 		//alert("hit")
-		$.get("http://localhost:3000/devices",function(data){
+		//$.get("http://localhost:3000/devices",function(data){
 			console.log("request")
 			var tempSave = $("select").val()
 			$("select").empty()
-			for(i=2; i<=data;i++){
+			for(i=2; i<=devices;i++){
 				$("#playerInput").append('<option>'+i+'</option>')
 			}
 			$("select").val(tempSave)
-		})
+		//})
 	})
 	$(".settingsBut").click(function(event){
 	  event.preventDefault()
@@ -44,12 +45,12 @@ $(function(){
 	$(".logsBut").click(function(event){
 	  event.preventDefault()
 		$("#logsBod").empty()
-		$.get("http://localhost:3000",function(data){
-			for(it in data){
-				$("#logsBod").append('<tr><td>Player '+data[it].id+'</td>'+
-				'<td>'+data[it].type+'</td>'+'<td>'+data[it].time+'</td>'+'</tr>')
+		//$.get("http://localhost:3000",function(data){
+			for(it in db){
+				$("#logsBod").append('<tr><td>Player '+db[it].id+'</td>'+
+				'<td>'+db[it].type+'</td>'+'<td>'+db[it].time+'</td>'+'</tr>')
 			}
-		})
+		//})
 	  $(".settings").hide();
 		$(".results").hide()
 	  $(".logs").show();
