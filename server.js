@@ -22,6 +22,10 @@ app.post('/:id/:type/:time',function(req,res){
 app.get('/register',function(req,res){
   devices+=1;
   res.send({'id':devices})
+  if(devices == 2){
+    $('button').removeClass('disabled')
+    $('#playerInput').val('2')
+  }
 })
 
 app.get('/devices',function(req,res){

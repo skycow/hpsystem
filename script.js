@@ -58,7 +58,7 @@ $(function(){
 	$("button").click(function(event){
 		if($("button").html() == "Start"){
 			$("#timeStatus").html($("#timeInput").val()+" minutes remaining");
-			$('.progress-bar').css('width', 0+'%')
+			$('.progress-bar').css('width', 0+'%').addClass('progress-bar-striped active')
 			myTimer = setInterval(function(){
 				$("#timeStatus").html($("#timeInput").val()-curTime+" minutes remaining");
 				valeur = (curTime)/$("#timeInput").val()*100
@@ -72,6 +72,7 @@ $(function(){
 					$("button").html("Start")
 					$("#playerInput").removeAttr('disabled');
 					$("#timeInput").removeAttr('disabled');
+					$('.progress-bar').removeClass('progress-bar-striped active')
 				}
 
 
@@ -81,7 +82,7 @@ $(function(){
 				clearInterval(myTimer);
 				curTime=1
 			}
-			$('.progress-bar').css('width', 100+'%')
+			$('.progress-bar').css('width', 100+'%').removeClass('progress-bar-striped active')
 		}
 	});
 	$("button").click(function(event){
